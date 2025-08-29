@@ -18,7 +18,16 @@ namespace WinFormsApp1
         {
             this.Close();
         }
-
+        public void SaveDocument()
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            string filename = saveFileDialog1.FileName;
+            File.WriteAllText(filename, richTextBox1.Text);
+            MessageBox.Show("File succesfully saved!");
+        }
         private void savToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -28,6 +37,7 @@ namespace WinFormsApp1
             string filename = saveFileDialog1.FileName;
             File.WriteAllText(filename, richTextBox1.Text);
             MessageBox.Show("File succesfully saved!");
+            SaveDocument();     // Call the SaveDocument method to save the file
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,9 +52,21 @@ namespace WinFormsApp1
             MessageBox.Show("File succesfully opened!");
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1 newForm = new Form1();
+            newForm.Show();     // Show the new form
+        }
 
+        private void saveAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)        // Iterate through all open forms
+            {
+                if (form is Form1)
+                {
+                    ((Form1)form).SaveDocument();   // Call the SaveDocument method for each open Form1 instance
+                }
+            }
         }
     }
 }

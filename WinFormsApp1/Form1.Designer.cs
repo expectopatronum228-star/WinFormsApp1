@@ -86,6 +86,7 @@
             newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
             newWindowToolStripMenuItem.Size = new Size(243, 36);
             newWindowToolStripMenuItem.Text = "New window";
+            newWindowToolStripMenuItem.Click += newWindowToolStripMenuItem_Click;
             // 
             // openToolStripMenuItem
             // 
@@ -112,6 +113,7 @@
             saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
             saveAllToolStripMenuItem.Size = new Size(243, 36);
             saveAllToolStripMenuItem.Text = "Save all";
+            saveAllToolStripMenuItem.Click += saveAllToolStripMenuItem_Click;
             // 
             // printToolStripMenuItem
             // 
