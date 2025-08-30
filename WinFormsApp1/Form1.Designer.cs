@@ -32,6 +32,7 @@
             richTextBox1 = new RichTextBox();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
+            newTabToolStripMenuItem = new ToolStripMenuItem();
             newWindowToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
@@ -48,6 +49,7 @@
             deleteToolStripMenuItem = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
+            tabControl1 = new TabControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -76,10 +78,18 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newWindowToolStripMenuItem, openToolStripMenuItem, saveToolStripMenuItem, savToolStripMenuItem, saveAllToolStripMenuItem, printToolStripMenuItem, closeToolStripMenuItem, closeWindowToolStripMenuItem, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newTabToolStripMenuItem, newWindowToolStripMenuItem, openToolStripMenuItem, saveToolStripMenuItem, savToolStripMenuItem, saveAllToolStripMenuItem, printToolStripMenuItem, closeToolStripMenuItem, closeWindowToolStripMenuItem, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(63, 35);
             fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.Click += fileToolStripMenuItem_Click;
+            // 
+            // newTabToolStripMenuItem
+            // 
+            newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
+            newTabToolStripMenuItem.Size = new Size(243, 36);
+            newTabToolStripMenuItem.Text = "New Tab";
+            newTabToolStripMenuItem.Click += newTabToolStripMenuItem_Click;
             // 
             // newWindowToolStripMenuItem
             // 
@@ -100,12 +110,13 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(243, 36);
             saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // savToolStripMenuItem
             // 
             savToolStripMenuItem.Name = "savToolStripMenuItem";
             savToolStripMenuItem.Size = new Size(243, 36);
-            savToolStripMenuItem.Text = "Save as";
+            savToolStripMenuItem.Text = "Save As";
             savToolStripMenuItem.Click += savToolStripMenuItem_Click;
             // 
             // saveAllToolStripMenuItem
@@ -171,15 +182,29 @@
             deleteToolStripMenuItem.Size = new Size(168, 36);
             deleteToolStripMenuItem.Text = "Delete";
             // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.Title = "Save AS";
+            // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // tabControl1
+            // 
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 39);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1100, 591);
+            tabControl1.TabIndex = 2;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 630);
+            Controls.Add(tabControl1);
             Controls.Add(richTextBox1);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -216,5 +241,7 @@
         private ToolStripMenuItem deleteToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
         private OpenFileDialog openFileDialog1;
+        private ToolStripMenuItem newTabToolStripMenuItem;
+        private TabControl tabControl1;
     }
 }
